@@ -10,12 +10,12 @@ import SwiftData
 import SwiftUI
 
 struct HabitsList: View {
-    @Query(sort: \Habit.created, order: .forward) var allHabits: [Habit]
+    @Query(HabitsListInteractor.fetchDescription, animation: .default) var allHabits: [Habit]
     
     var body: some View {
         List {
-            ForEach(allHabits) {
-                HabitItem(habit: $0)
+            ForEach(allHabits) { habit in
+                HabitItem(habit: habit)
             }
         }
         .listStyle(.plain)
@@ -23,7 +23,7 @@ struct HabitsList: View {
         .toolbar {
             ToolbarItem { 
                 Button(action: {
-                    
+                    //Habit Editor
                 }, label: {
                     Label("New Habit", systemImage: "plus")
                 })
