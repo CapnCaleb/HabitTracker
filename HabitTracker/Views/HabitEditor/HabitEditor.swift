@@ -13,7 +13,7 @@ struct HabitEditor: View {
     @ObservedObject private var presenter: HabitEditorPresenter
     @Environment(\.dismiss) private var dismiss
     
-    init(context: ModelContext, habit: Habit? = nil) {
+    init(habit: Habit? = nil, context: ModelContext) {
         self.presenter = HabitEditorPresenter(habit: habit, context: context)
     }
     
